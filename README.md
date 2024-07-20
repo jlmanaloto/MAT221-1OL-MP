@@ -32,6 +32,9 @@ This will show the __helper__ which describes how to use the tool.
 
 This tool provides different numerical methods.
 
+> [!TIP]
+> It is generally a good idea to enclose the function and data points with quotes.
+
 ### Forward Finite Divided Difference
 
 To use Forward Finite Divided Difference:
