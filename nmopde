@@ -1,0 +1,69 @@
+#!/usr/bin/env python
+
+import argparse
+import importlib
+import os
+import pathlib
+
+
+def _import_parsers():
+    main_dir = pathlib.Path(__file__).parent.resolve()
+    methods_dir = os.path.join(main_dir, "methods")
+    items = os.listdir(methods_dir)
+    modules = [
+        item for item in items
+        if (
+            (not item.startswith("__") or item.endswith("swp")) and
+            item.endswith("py")
+        )
+    ]
+    for module in modules:
+        _module = module.replace(".py", "")
+        module_name = f"methods.{_module}"
+        classname = _module.replace("_", "").title()
+        method = _import_module(module_name, classname)
+        method.subparser(subparser)
+
+
+def _import_module(module_name, classname):
+    module = importlib.import_module(module_name)
+    class_object = getattr(module, classname)()
+    return class_object
+
+
+def run(args):
+    module_name = f"methods.{args.method}"
+    classname = str(args.method).replace("_", "").title()
+
+    method = _import_module(module_name, classname)
+    method.evaluate(args)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    subparser = parser.add_subparsers(
+        help="Methods description",
+        dest="method",
+    )
+
+    _import_parsers()
+
+    parser.add_argument(
+        "-r",
+        "--round",
+        action="store",
+        default=5,
+        help="Decimal places to round off.",
+        type=int,
+    )
+    parser.add_argument(
+        "-v",
+        "--variable",
+        action="store",
+        default="x",
+        help="Specify the variable of the function. Defaults to 'x'.",
+        type=str,
+    )
+
+    args = parser.parse_args()
+    run(args)
