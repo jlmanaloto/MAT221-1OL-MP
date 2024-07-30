@@ -63,7 +63,7 @@ To use Newton Interpolation:
 
 ### Richardson Extrapolation
 
-To use Richardson Extrapolation to improve the to FDD truncated solution:
+To use Richardson Extrapolation to improve the FDD truncated solution:
 
     ~$ nmopde richardson_extrapolation -h
     ~$ nmopde richardson_extrapolation -x=0.5 -s="0.5,0.25" -f="-0.1*(x^4) - 0.15*(x^3) - 0.5*(x^2) - 0.25*x + 1.2"
@@ -77,7 +77,7 @@ To use Secant Method:
 
 ### Simpson's 1/3 Rule
 
-To Use Simpson's 1/3 Rule:
+To use Simpson's 1/3 Rule:
 
     ~$ nmopde simpson13 -h
     ~$ nmopde simpson13 -f="0.2 + 25*x - 200*(x^2) + 675*(x^3) - 900*(x^4) + 400*(x^5)" -l=0 -u=0.8 -s=6
