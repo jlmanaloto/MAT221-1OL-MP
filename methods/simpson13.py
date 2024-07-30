@@ -44,6 +44,22 @@ class Simpson13:
             help="Absolute error.",
             type=int,
         )
+        subparser.add_argument(
+            "-r",
+            "--round",
+            action="store",
+            default=5,
+            help="Decimal places to round off.",
+            type=int,
+        )
+        subparser.add_argument(
+            "-v",
+            "--variable",
+            action="store",
+            default="x",
+            help="Specify the variable of the function. Defaults to 'x'.",
+            type=str,
+        )
 
     def _simpson13(self, a, b, n, f, r, v):
         print("\n*** Simpson's 1/3 Rule ***\n")

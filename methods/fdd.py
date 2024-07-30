@@ -36,6 +36,22 @@ class Fdd:
             type=float,
 
         )
+        subparser.add_argument(
+            "-r",
+            "--round",
+            action="store",
+            default=5,
+            help="Decimal places to round off.",
+            type=int,
+        )
+        subparser.add_argument(
+            "-v",
+            "--variable",
+            action="store",
+            default="x",
+            help="Specify the variable of the function. Defaults to 'x'.",
+            type=str,
+        )
 
     def _fdd_trunc(self, xi, h, f, r, v):
         xi1 = xi + h

@@ -36,6 +36,22 @@ class Richardsonextrapolation:
             help="Segments (h) to use. Specify a maximum of two segments delimited by a comma.",
             type=str,
         )
+        subparser.add_argument(
+            "-r",
+            "--round",
+            action="store",
+            default=5,
+            help="Decimal places to round off.",
+            type=int,
+        )
+        subparser.add_argument(
+            "-v",
+            "--variable",
+            action="store",
+            default="x",
+            help="Specify the variable of the function. Defaults to 'x'.",
+            type=str,
+        )
 
     def _richardson(self, xi, segments, f, r, v):
         fdd = Fdd()

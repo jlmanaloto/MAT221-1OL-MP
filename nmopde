@@ -48,22 +48,5 @@ if __name__ == "__main__":
 
     _import_parsers()
 
-    parser.add_argument(
-        "-r",
-        "--round",
-        action="store",
-        default=5,
-        help="Decimal places to round off.",
-        type=int,
-    )
-    parser.add_argument(
-        "-v",
-        "--variable",
-        action="store",
-        default="x",
-        help="Specify the variable of the function. Defaults to 'x'.",
-        type=str,
-    )
-
     args = parser.parse_args()
     run(args)

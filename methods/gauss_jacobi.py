@@ -76,6 +76,22 @@ class Gaussjacobi:
             type=float,
 
         )
+        subparser.add_argument(
+            "-r",
+            "--round",
+            action="store",
+            default=5,
+            help="Decimal places to round off.",
+            type=int,
+        )
+        subparser.add_argument(
+            "-v",
+            "--variable",
+            action="store",
+            default="x",
+            help="Specify the variable of the function. Defaults to 'x'.",
+            type=str,
+        )
 
     def _jacobi(self, x, y, z, fx, fy, fz, e, r, v):
         count = 0

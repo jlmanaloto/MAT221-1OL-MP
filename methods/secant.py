@@ -45,6 +45,22 @@ class Secant:
             type=float,
 
         )
+        subparser.add_argument(
+            "-r",
+            "--round",
+            action="store",
+            default=5,
+            help="Decimal places to round off.",
+            type=int,
+        )
+        subparser.add_argument(
+            "-v",
+            "--variable",
+            action="store",
+            default="x",
+            help="Specify the variable of the function. Defaults to 'x'.",
+            type=str,
+        )
 
     def _secant(self, x0, x1, e, f, r, v):
         print('\n*** SECANT METHOD ***\n')
@@ -53,12 +69,17 @@ class Secant:
         ]
         step = 1
         condition = True
+        iteration=0
         while condition:
             fx0 = func(f, x0, r, v)
             fx1 = func(f, x1, r, v)
             if fx0 == fx1:
-                function_compute(f)
+                if iteration == 0:
+                    function_compute(f)
+                else:
+                    break
 
+            iteration = -1
             x2 = rounder((x0 - (x1-x0)*fx0/(fx1 - fx0)), r)
             fx2 = func(f, x2, r, v)
             data.append([step, x0, fx0, x1, fx1, x2, fx2])

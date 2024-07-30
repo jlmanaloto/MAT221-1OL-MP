@@ -34,13 +34,14 @@ This tool provides different numerical methods.
 
 > [!TIP]
 > It is generally a good idea to enclose the function and data points with quotes.
+> When passing negative numbers as input (e.g. for Newton Interpolation), use -x='-1' instead of -x '-1'.
 
 ### Forward Finite Divided Difference
 
 To use Forward Finite Divided Difference:
 
     ~$ nmopde fdd -h
-    ~$ nmopde fdd -x 0.5 -s 0.25 -f "-0.1*(x^4) - 0.15*(x^3) - 0.5*(x^2) - 0.25*x + 1.2"
+    ~$ nmopde fdd -x=0.5 -s=0.25 -f="-0.1*(x^4) - 0.15*(x^3) - 0.5*(x^2) - 0.25*x + 1.2"
 
 This will give an output for the following:
 1. Truncated
@@ -51,35 +52,35 @@ This will give an output for the following:
 To use Gauss Jacobi:
 
     ~$ nmopde gauss_jacobi -h
-    ~$ nmopde gauss_jacobi -x 0 -y 0 -z 0 -fx "(3+y+z)/4" -fy "(9+2*x-z)/6" -fz "(-6+x-y)/7" -e 0.00001
+    ~$ nmopde gauss_jacobi -x=0 -y=0 -z=0 -fx="(11+2*y-z)/6" -fy="(5+2*x-2*z)/7" -fz="(1+x+2*y)/5" -e=0.0001 -r=4
 
 ### Newton Interpolation - Divided Difference
 
 To use Newton Interpolation:
 
     ~$ nmopde newton_interpolation -h
-    ~$ nmopde newton_interpolation -x "5,10,15,20,25,30,35" -y "5.02375,41.095,25.87625,34.78,40.46875,10.355,4.10125" -p 32.5
+    ~$ nmopde newton_interpolation -x='-4,-2,-1,1,2,3' -y='-66,-10,-3,-1,6,25' -p=4
 
 ### Richardson Extrapolation
 
 To use Richardson Extrapolation to improve the to FDD truncated solution:
 
     ~$ nmopde richardson_extrapolation -h
-    ~$ nmopde richardson_extrapolation -x 0.5 -s "0.5,0.25" -f "-0.1*(x^4) - 0.15*(x^3) - 0.5*(x^2) - 0.25*x + 1.2"
+    ~$ nmopde richardson_extrapolation -x=0.5 -s="0.5,0.25" -f="-0.1*(x^4) - 0.15*(x^3) - 0.5*(x^2) - 0.25*x + 1.2"
 
 ### Secant Method
 
 To use Secant Method:
 
     ~$ nmopde secant -h
-    ~$ nmopde secant -f "(1 - x**2)**2 + 0.05963364 * x**2 - 0.25" -l 0 -u 1 -e 0.00001
+    ~$ nmopde nmopde secant -f="x^3 - 4*(x^2) + x - 10" -l=3 -u=4 -e=0.0001 -r=4
 
 ### Simpson's 1/3 Rule
 
 To Use Simpson's 1/3 Rule:
 
     ~$ nmopde simpson13 -h
-    ~$ nmopde simpson13 -f '(1/(sqrt(2*pi)))*e((-0.5)*x**2)' -l -2 -u 1.6 -s 4
+    ~$ nmopde simpson13 -f="0.2 + 25*x - 200*(x^2) + 675*(x^3) - 900*(x^4) + 400*(x^5)" -l=0 -u=0.8 -s=6
 
 ## Development
 
