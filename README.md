@@ -73,7 +73,7 @@ To use Richardson Extrapolation to improve the FDD truncated solution:
 To use Secant Method:
 
     ~$ nmopde secant -h
-    ~$ nmopde nmopde secant -f="x^3 - 4*(x^2) + x - 10" -l=3 -u=4 -e=0.0001 -r=4
+    ~$ nmopde secant -f="x^3 - 4*(x^2) + x - 10" -l=3 -u=4 -e=0.0001 -r=4
 
 ### Simpson's 1/3 Rule
 
